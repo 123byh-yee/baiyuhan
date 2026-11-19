@@ -1,0 +1,24 @@
+{
+  "name": "bai-zhihu-clone",
+  "version": "1.0.0",
+  "description": "知乎的模仿和制作 —— 白雨涵全栈课程项目",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "zhihu",
+    "express",
+    "mysql",
+    "bai"
+  ],
+  "author": "白雨涵 24001010326",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "mysql2": "^3.24.6"
+  }
+}

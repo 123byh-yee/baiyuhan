@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+姓名：白雨涵 | 学号：24001010326 | 时间：2026-11-19 | 大模型：DeepSeek-V4.1-Flash
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>知乎的模仿和制作 | 白雨涵</title>
+  <link rel="stylesheet" href="./css/Bai_index.css" />
+</head>
+<body class="Bai_body">
+  <!-- 背景粒子动画 -->
+  <canvas id="Bai_canvas" class="Bai_canvas"></canvas>
+  <div class="Bai_glow Bai_glowLeft"></div>
+  <div class="Bai_glow Bai_glowRight"></div>
+
+  <main class="Bai_main">
+    <!-- 项目信息 -->
+    <header class="Bai_hero">
+      <p class="Bai_badge">
+        <span class="Bai_dot"></span>项目类别：模仿
+      </p>
+
+      <h1 class="Bai_title">知乎的模仿和制作</h1>
+
+      <p class="Bai_subtitle">
+        使用原生 HTML / CSS / JavaScript 仿制知乎问答社区，配合 Node.js + Express + MySQL
+        提供完整的数据服务，不含任何第三方框架与 CDN 资源。
+      </p>
+
+      <ul class="Bai_meta">
+        <li class="Bai_metaItem">
+          <span class="Bai_metaLabel">姓名</span>
+          <span class="Bai_metaValue">白雨涵</span>
+        </li>
+        <li class="Bai_metaItem">
+          <span class="Bai_metaLabel">学号</span>
+          <span class="Bai_metaValue">24001010326</span>
+        </li>
+        <li class="Bai_metaItem">
+          <span class="Bai_metaLabel">技术栈</span>
+          <span class="Bai_metaValue">原生三件套 · Express · MySQL</span>
+        </li>
+      </ul>
+    </header>
+
+    <!-- 页面导航 -->
+    <section class="Bai_navSection">
+      <div class="Bai_navHead">
+        <h2 class="Bai_navTitle">页面导航</h2>
+        <span class="Bai_navCount" id="Bai_navCount">1 个页面</span>
+      </div>
+
+      <nav class="Bai_navGrid" id="Bai_navGrid">
+        <!-- 新建页面后，请在此处追加 <a class="Bai_navCard"> 入口（文件名含 detail 的页面除外） -->
+        <a class="Bai_navCard" href="./index.html">
+          <span class="Bai_cardIcon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 10.5 12 3l9 7.5" />
+              <path d="M5.5 9.5V20h13V9.5" />
+              <path d="M9.5 20v-5.5h5V20" />
+            </svg>
+          </span>
+          <span class="Bai_cardBody">
+            <span class="Bai_cardTitle">首页</span>
+            <span class="Bai_cardDesc">项目概览 · 全站入口</span>
+          </span>
+          <span class="Bai_cardArrow">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14" />
+              <path d="m13 6 6 6-6 6" />
+            </svg>
+          </span>
+        </a>
+
+        <div class="Bai_navCard Bai_navCardEmpty">
+          <span class="Bai_cardIcon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 8v4.5" />
+              <path d="M12 16h.01" />
+            </svg>
+          </span>
+          <span class="Bai_cardBody">
+            <span class="Bai_cardTitle">更多页面建设中</span>
+            <span class="Bai_cardDesc">后续完成的页面会在此处追加链接</span>
+          </span>
+        </div>
+      </nav>
+    </section>
+
+    <footer class="Bai_footer">
+      <span>白雨涵 · 24001010326</span>
+      <span class="Bai_footerDivider">/</span>
+      <span>知乎的模仿和制作 · 全栈课程项目</span>
+    </footer>
+  </main>
+
+  <script src="./js/Bai_canvas.js"></script>
+</body>
+</html>
