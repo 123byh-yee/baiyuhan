@@ -1,0 +1,259 @@
+/* 姓名：白雨涵 | 学号：24001010326 | 时间：2026-11-19 | 大模型：DeepSeek-V4.1-Flash */
+
+.Bai_mainWide {
+  max-width: 1000px;
+}
+
+.Bai_titleSmall {
+  font-size: clamp(28px, 4.4vw, 42px);
+}
+
+.Bai_back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 28px;
+  padding: 8px 14px 8px 10px;
+  border: 1px solid var(--Bai_line);
+  border-radius: 999px;
+  background: rgba(18, 30, 56, 0.55);
+  color: #a9c1e8;
+  font-size: 12.5px;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.Bai_back:hover {
+  color: #e6efff;
+  border-color: rgba(122, 162, 255, 0.42);
+  transform: translateX(-2px);
+}
+
+.Bai_code {
+  padding: 1px 6px;
+  border-radius: 5px;
+  background: rgba(122, 162, 255, 0.12);
+  color: #a9c8ff;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 12px;
+}
+
+/* ===== 接口信息 ===== */
+.Bai_apiPanel {
+  margin-top: 34px;
+  padding: 16px 20px;
+  border: 1px solid rgba(122, 162, 255, 0.22);
+  border-left: 3px solid rgba(56, 214, 255, 0.7);
+  border-radius: 14px;
+  background: rgba(10, 18, 34, 0.68);
+  backdrop-filter: blur(12px);
+  animation: Bai_fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+}
+
+.Bai_apiHead {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.Bai_apiMethod {
+  padding: 3px 9px;
+  border-radius: 6px;
+  background: rgba(46, 214, 152, 0.16);
+  color: #58e0b0;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.Bai_apiPath {
+  color: #d7e4ff;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 13.5px;
+}
+
+.Bai_apiOpen {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  color: #7fc4ff;
+  font-size: 12.5px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.Bai_apiOpen:hover {
+  color: #b9e4ff;
+}
+
+.Bai_apiUrl {
+  margin: 10px 0 0;
+  color: rgba(143, 164, 200, 0.9);
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 12.5px;
+  line-height: 1.7;
+  word-break: break-all;
+}
+
+/* ===== 状态提示 ===== */
+.Bai_status {
+  margin-top: 22px;
+  padding: 16px 18px;
+  border: 1px dashed rgba(122, 162, 255, 0.24);
+  border-radius: 13px;
+  background: rgba(10, 18, 34, 0.5);
+  color: rgba(169, 193, 232, 0.9);
+  font-size: 13px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.Bai_status[hidden] {
+  display: none;
+}
+
+.Bai_statusError {
+  border-style: solid;
+  border-color: rgba(255, 106, 118, 0.42);
+  background: rgba(48, 18, 26, 0.6);
+  color: #ffb3ba;
+}
+
+/* ===== 图文网格 ===== */
+.Bai_galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.Bai_galleryCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--Bai_line);
+  border-radius: 16px;
+  background: linear-gradient(160deg, rgba(23, 37, 66, 0.72), rgba(10, 18, 34, 0.68));
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  animation: Bai_fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.Bai_galleryCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(122, 162, 255, 0.45);
+  box-shadow: 0 24px 48px -28px rgba(47, 123, 255, 0.85);
+}
+
+.Bai_galleryThumb {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: rgba(6, 12, 24, 0.9);
+}
+
+.Bai_galleryThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.Bai_galleryCard:hover .Bai_galleryThumb img {
+  transform: scale(1.05);
+}
+
+.Bai_galleryThumbError {
+  display: grid;
+  place-items: center;
+  color: rgba(143, 164, 200, 0.85);
+  font-size: 12.5px;
+}
+
+.Bai_galleryThumbError img {
+  display: none;
+}
+
+.Bai_galleryThumbError::after {
+  content: "图片加载失败";
+}
+
+.Bai_galleryBody {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 16px 18px 18px;
+}
+
+.Bai_galleryTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.Bai_galleryTag {
+  padding: 3px 10px;
+  border: 1px solid rgba(56, 214, 255, 0.3);
+  border-radius: 999px;
+  background: rgba(56, 214, 255, 0.1);
+  color: #8fe6ff;
+  font-size: 11.5px;
+  letter-spacing: 0.6px;
+}
+
+.Bai_galleryTime {
+  margin-left: auto;
+  color: rgba(143, 164, 200, 0.75);
+  font-size: 11.5px;
+  letter-spacing: 0.4px;
+}
+
+.Bai_galleryTitle {
+  margin: 0;
+  color: #f0f6ff;
+  font-size: 15.5px;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.Bai_galleryDesc {
+  margin: 0;
+  color: #a8bcda;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.Bai_galleryMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 4px;
+  padding-top: 11px;
+  border-top: 1px solid rgba(122, 162, 255, 0.1);
+  color: rgba(143, 164, 200, 0.8);
+  font-size: 12px;
+  letter-spacing: 0.4px;
+}
+
+.Bai_summary {
+  margin: 20px 0 0;
+  color: rgba(143, 164, 200, 0.7);
+  font-size: 12px;
+  text-align: right;
+  letter-spacing: 0.4px;
+}
+
+@media (max-width: 640px) {
+  .Bai_galleryGrid {
+    grid-template-columns: 1fr;
+  }
+  .Bai_galleryBody {
+    padding: 14px 16px 16px;
+  }
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--
+姓名：白雨涵 | 学号：24001010326 | 时间：2026-11-19 | 大模型：DeepSeek-V4.1-Flash
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>数据库连接 | 知乎的模仿和制作</title>
+  <link rel="stylesheet" href="./css/Bai_index.css" />
+  <link rel="stylesheet" href="./css/Bai_database.css" />
+</head>
+<body class="Bai_body">
+  <canvas id="Bai_canvas" class="Bai_canvas"></canvas>
+  <div class="Bai_glow Bai_glowLeft"></div>
+  <div class="Bai_glow Bai_glowRight"></div>
+
+  <main class="Bai_main Bai_mainNarrow">
+    <a class="Bai_back" href="./index.html">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5" />
+        <path d="m11 18-6-6 6-6" />
+      </svg>
+      返回首页
+    </a>
+
+    <header class="Bai_hero">
+      <p class="Bai_badge">
+        <span class="Bai_dot"></span>数据库连接测试
+      </p>
+      <h1 class="Bai_title Bai_titleSmall">连接 MySQL 数据库</h1>
+      <p class="Bai_subtitle">
+        输入数据库用户名与密码，服务端将使用该账号尝试建立 MySQL 连接，并返回连接结果与服务器信息。
+      </p>
+    </header>
+
+    <section class="Bai_panel">
+      <form class="Bai_form" id="Bai_form" novalidate>
+        <div class="Bai_field">
+          <label class="Bai_label" for="Bai_username">用户名</label>
+          <input
+            class="Bai_input"
+            id="Bai_username"
+            name="username"
+            type="text"
+            value="root"
+            placeholder="请输入数据库用户名"
+            autocomplete="username"
+            spellcheck="false"
+          />
+        </div>
+
+        <div class="Bai_field">
+          <label class="Bai_label" for="Bai_password">密码</label>
+          <div class="Bai_inputWrap">
+            <input
+              class="Bai_input"
+              id="Bai_password"
+              name="password"
+              type="password"
+              value="root"
+              placeholder="请输入数据库密码"
+              autocomplete="current-password"
+            />
+            <button class="Bai_eye" id="Bai_eye" type="button" aria-label="显示密码" aria-pressed="false">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z" />
+                <circle cx="12" cy="12" r="2.6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <p class="Bai_hint">
+          主机与端口取自服务端 <code class="Bai_code">backend/.env</code> 配置，默认 <code class="Bai_code">127.0.0.1:3306</code>。
+        </p>
+
+        <div class="Bai_actions">
+          <button class="Bai_btn Bai_btnPrimary" id="Bai_submit" type="submit">连接数据库</button>
+          <button class="Bai_btn" id="Bai_reset" type="reset">重置</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- 连接结果 -->
+    <section class="Bai_result" id="Bai_result" hidden aria-live="polite">
+      <div class="Bai_resultHead">
+        <span class="Bai_resultDot" id="Bai_resultDot"></span>
+        <span class="Bai_resultTitle" id="Bai_resultTitle"></span>
+        <span class="Bai_resultTime" id="Bai_resultTime"></span>
+      </div>
+      <p class="Bai_resultMsg" id="Bai_resultMsg"></p>
+      <ul class="Bai_resultList" id="Bai_resultList"></ul>
+    </section>
+
+    <footer class="Bai_footer">
+      <span>白雨涵 · 24001010326</span>
+      <span class="Bai_footerDivider">/</span>
+      <span>知乎的模仿和制作 · 数据库连接测试</span>
+    </footer>
+  </main>
+
+  <script src="./js/Bai_canvas.js"></script>
+  <script src="./js/Bai_database.js"></script>
+</body>
+</html>

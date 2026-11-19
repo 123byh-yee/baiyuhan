@@ -18,6 +18,7 @@
   let Bai_height = 0;
   let Bai_dpr = 1;
   let Bai_particles = [];
+  let Bai_frameId = null;
 
   const Bai_pointer = { Bai_x: null, Bai_y: null };
 

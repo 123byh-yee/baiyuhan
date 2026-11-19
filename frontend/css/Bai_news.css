@@ -1,0 +1,320 @@
+/* 姓名：白雨涵 | 学号：24001010326 | 时间：2026-11-19 | 大模型：DeepSeek-V4.1-Flash */
+
+.Bai_mainWide {
+  max-width: 900px;
+}
+
+.Bai_titleSmall {
+  font-size: clamp(28px, 4.4vw, 42px);
+}
+
+/* ===== 返回入口（与数据库页保持一致） ===== */
+.Bai_back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 28px;
+  padding: 8px 14px 8px 10px;
+  border: 1px solid var(--Bai_line);
+  border-radius: 999px;
+  background: rgba(18, 30, 56, 0.55);
+  color: #a9c1e8;
+  font-size: 12.5px;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.Bai_back:hover {
+  color: #e6efff;
+  border-color: rgba(122, 162, 255, 0.42);
+  transform: translateX(-2px);
+}
+
+.Bai_code {
+  padding: 1px 6px;
+  border-radius: 5px;
+  background: rgba(122, 162, 255, 0.12);
+  color: #a9c8ff;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 12px;
+}
+
+/* ===== 接口信息 ===== */
+.Bai_apiPanel {
+  margin-top: 34px;
+  padding: 16px 20px;
+  border: 1px solid rgba(122, 162, 255, 0.22);
+  border-left: 3px solid rgba(56, 214, 255, 0.7);
+  border-radius: 14px;
+  background: rgba(10, 18, 34, 0.68);
+  backdrop-filter: blur(12px);
+  animation: Bai_fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+}
+
+.Bai_apiHead {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.Bai_apiMethod {
+  padding: 3px 9px;
+  border-radius: 6px;
+  background: rgba(46, 214, 152, 0.16);
+  color: #58e0b0;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.Bai_apiPath {
+  color: #d7e4ff;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 13.5px;
+}
+
+.Bai_apiOpen {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  color: #7fc4ff;
+  font-size: 12.5px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.Bai_apiOpen:hover {
+  color: #b9e4ff;
+}
+
+.Bai_apiUrl {
+  margin: 10px 0 0;
+  color: rgba(143, 164, 200, 0.9);
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 12.5px;
+  line-height: 1.7;
+  word-break: break-all;
+}
+
+/* ===== 筛选栏 ===== */
+.Bai_filter {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.Bai_chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex: 1 1 auto;
+}
+
+.Bai_chip {
+  padding: 7px 15px;
+  border: 1px solid rgba(122, 162, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(18, 30, 56, 0.62);
+  color: #a9c1e8;
+  font-size: 12.5px;
+  font-family: inherit;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.Bai_chip:hover {
+  color: #e6efff;
+  border-color: rgba(122, 162, 255, 0.45);
+}
+
+.Bai_chipActive {
+  border-color: transparent;
+  background: linear-gradient(120deg, rgba(47, 123, 255, 0.9), rgba(56, 214, 255, 0.85));
+  color: #04101f;
+  font-weight: 700;
+}
+
+.Bai_search {
+  display: flex;
+  gap: 8px;
+  flex: 0 1 300px;
+}
+
+.Bai_searchInput {
+  width: 100%;
+  min-width: 0;
+  padding: 9px 14px;
+  border: 1px solid rgba(122, 162, 255, 0.22);
+  border-radius: 11px;
+  background: rgba(6, 12, 24, 0.72);
+  color: var(--Bai_text);
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.Bai_searchInput::placeholder {
+  color: rgba(143, 164, 200, 0.55);
+}
+
+.Bai_searchInput:focus {
+  border-color: rgba(56, 214, 255, 0.6);
+  box-shadow: 0 0 0 3px rgba(47, 123, 255, 0.14);
+}
+
+.Bai_searchBtn {
+  flex: 0 0 auto;
+  padding: 9px 20px;
+  border: 1px solid rgba(122, 162, 255, 0.3);
+  border-radius: 11px;
+  background: rgba(20, 32, 56, 0.8);
+  color: #cfe0ff;
+  font-size: 13px;
+  font-family: inherit;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.Bai_searchBtn:hover {
+  border-color: rgba(122, 162, 255, 0.55);
+  transform: translateY(-1px);
+}
+
+/* ===== 状态提示 ===== */
+.Bai_status {
+  margin-top: 22px;
+  padding: 16px 18px;
+  border: 1px dashed rgba(122, 162, 255, 0.24);
+  border-radius: 13px;
+  background: rgba(10, 18, 34, 0.5);
+  color: rgba(169, 193, 232, 0.9);
+  font-size: 13px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.Bai_status[hidden] {
+  display: none;
+}
+
+.Bai_statusError {
+  border-style: solid;
+  border-color: rgba(255, 106, 118, 0.42);
+  background: rgba(48, 18, 26, 0.6);
+  color: #ffb3ba;
+}
+
+/* ===== 新闻列表 ===== */
+.Bai_newsList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.Bai_newsCard {
+  padding: 20px 22px;
+  border: 1px solid var(--Bai_line);
+  border-radius: 16px;
+  background: linear-gradient(160deg, rgba(23, 37, 66, 0.7), rgba(10, 18, 34, 0.66));
+  backdrop-filter: blur(12px);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.28s ease,
+    box-shadow 0.28s ease;
+  animation: Bai_fadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.Bai_newsCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(122, 162, 255, 0.42);
+  box-shadow: 0 20px 44px -26px rgba(47, 123, 255, 0.8);
+}
+
+.Bai_newsTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.Bai_tag {
+  padding: 3px 10px;
+  border: 1px solid rgba(56, 214, 255, 0.3);
+  border-radius: 999px;
+  background: rgba(56, 214, 255, 0.1);
+  color: #8fe6ff;
+  font-size: 11.5px;
+  letter-spacing: 0.6px;
+}
+
+.Bai_newsTime {
+  margin-left: auto;
+  color: rgba(143, 164, 200, 0.75);
+  font-size: 12px;
+  letter-spacing: 0.4px;
+}
+
+.Bai_newsTitle {
+  margin: 12px 0 0;
+  color: #f0f6ff;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.55;
+  letter-spacing: 0.2px;
+}
+
+.Bai_newsSummary {
+  margin: 10px 0 0;
+  color: #a8bcda;
+  font-size: 13.5px;
+  line-height: 1.85;
+}
+
+.Bai_newsMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(122, 162, 255, 0.1);
+  color: rgba(143, 164, 200, 0.8);
+  font-size: 12px;
+  letter-spacing: 0.4px;
+}
+
+.Bai_newsMetaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.Bai_summary {
+  margin: 20px 0 0;
+  color: rgba(143, 164, 200, 0.7);
+  font-size: 12px;
+  text-align: right;
+  letter-spacing: 0.4px;
+}
+
+@media (max-width: 640px) {
+  .Bai_filter {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .Bai_search {
+    flex: 1 1 auto;
+  }
+  .Bai_newsCard {
+    padding: 16px;
+  }
+  .Bai_newsTitle {
+    font-size: 15.5px;
+  }
+}

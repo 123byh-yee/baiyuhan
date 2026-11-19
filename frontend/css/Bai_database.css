@@ -1,0 +1,316 @@
+/* 姓名：白雨涵 | 学号：24001010326 | 时间：2026-11-19 | 大模型：DeepSeek-V4.1-Flash */
+
+.Bai_mainNarrow {
+  max-width: 720px;
+}
+
+.Bai_titleSmall {
+  font-size: clamp(28px, 4.4vw, 42px);
+}
+
+/* ===== 返回入口 ===== */
+.Bai_back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 28px;
+  padding: 8px 14px 8px 10px;
+  border: 1px solid var(--Bai_line);
+  border-radius: 999px;
+  background: rgba(18, 30, 56, 0.55);
+  color: #a9c1e8;
+  font-size: 12.5px;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.Bai_back:hover {
+  color: #e6efff;
+  border-color: rgba(122, 162, 255, 0.42);
+  transform: translateX(-2px);
+}
+
+/* ===== 表单面板 ===== */
+.Bai_panel {
+  margin-top: 40px;
+  padding: 28px;
+  border: 1px solid var(--Bai_line);
+  border-radius: 20px;
+  background: linear-gradient(160deg, rgba(23, 37, 66, 0.72), rgba(10, 18, 34, 0.7));
+  backdrop-filter: blur(16px);
+  box-shadow: 0 30px 60px -40px rgba(2, 8, 20, 0.9);
+  animation: Bai_fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.Bai_form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.Bai_field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.Bai_label {
+  color: #a9c1e8;
+  font-size: 13px;
+  letter-spacing: 0.6px;
+}
+
+.Bai_inputWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.Bai_input {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid rgba(122, 162, 255, 0.22);
+  border-radius: 12px;
+  background: rgba(6, 12, 24, 0.72);
+  color: var(--Bai_text);
+  font-size: 14.5px;
+  font-family: inherit;
+  letter-spacing: 0.4px;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.Bai_input::placeholder {
+  color: rgba(143, 164, 200, 0.6);
+}
+
+.Bai_input:hover {
+  border-color: rgba(122, 162, 255, 0.38);
+}
+
+.Bai_input:focus {
+  border-color: rgba(56, 214, 255, 0.66);
+  background: rgba(8, 16, 32, 0.9);
+  box-shadow: 0 0 0 3px rgba(47, 123, 255, 0.16);
+}
+
+.Bai_inputWrap .Bai_input {
+  padding-right: 48px;
+}
+
+.Bai_eye {
+  position: absolute;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  color: rgba(143, 164, 200, 0.85);
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.Bai_eye:hover {
+  color: #cfe0ff;
+  background: rgba(122, 162, 255, 0.12);
+}
+
+.Bai_hint {
+  margin: 0;
+  color: rgba(143, 164, 200, 0.78);
+  font-size: 12.5px;
+  line-height: 1.8;
+}
+
+.Bai_code {
+  padding: 1px 6px;
+  border-radius: 5px;
+  background: rgba(122, 162, 255, 0.12);
+  color: #a9c8ff;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 12px;
+}
+
+.Bai_actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.Bai_btn {
+  padding: 12px 26px;
+  border: 1px solid rgba(122, 162, 255, 0.28);
+  border-radius: 12px;
+  background: rgba(20, 32, 56, 0.72);
+  color: #cfe0ff;
+  font-size: 14px;
+  font-family: inherit;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.Bai_btn:hover {
+  border-color: rgba(122, 162, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.Bai_btn:active {
+  transform: translateY(0);
+}
+
+.Bai_btnPrimary {
+  border-color: transparent;
+  background: linear-gradient(120deg, #2f7bff, #38d6ff);
+  color: #04101f;
+  font-weight: 700;
+  box-shadow: 0 14px 30px -16px rgba(47, 123, 255, 0.9);
+}
+
+.Bai_btnPrimary:hover {
+  box-shadow: 0 18px 36px -16px rgba(56, 214, 255, 0.85);
+}
+
+.Bai_btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ===== 结果面板 ===== */
+.Bai_result {
+  margin-top: 22px;
+  padding: 20px 22px;
+  border: 1px solid var(--Bai_line);
+  border-radius: 18px;
+  background: rgba(10, 18, 34, 0.72);
+  backdrop-filter: blur(14px);
+  animation: Bai_fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.Bai_result[hidden] {
+  display: none;
+}
+
+.Bai_resultSuccess {
+  border-color: rgba(46, 214, 152, 0.42);
+  background: linear-gradient(150deg, rgba(14, 44, 36, 0.72), rgba(8, 20, 20, 0.7));
+}
+
+.Bai_resultError {
+  border-color: rgba(255, 106, 118, 0.42);
+  background: linear-gradient(150deg, rgba(48, 18, 26, 0.72), rgba(22, 10, 16, 0.7));
+}
+
+.Bai_resultHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.Bai_resultDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #8fa4c8;
+  flex: 0 0 auto;
+}
+
+.Bai_resultSuccess .Bai_resultDot {
+  background: #2ed698;
+  box-shadow: 0 0 0 4px rgba(46, 214, 152, 0.16);
+}
+
+.Bai_resultError .Bai_resultDot {
+  background: #ff6a76;
+  box-shadow: 0 0 0 4px rgba(255, 106, 118, 0.16);
+}
+
+.Bai_resultTitle {
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: 0.4px;
+}
+
+.Bai_resultSuccess .Bai_resultTitle {
+  color: #7df0c0;
+}
+
+.Bai_resultError .Bai_resultTitle {
+  color: #ffb3ba;
+}
+
+.Bai_resultTime {
+  margin-left: auto;
+  color: rgba(143, 164, 200, 0.72);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.Bai_resultMsg {
+  margin: 12px 0 0;
+  color: #d7e4ff;
+  font-size: 13.5px;
+  line-height: 1.75;
+  word-break: break-all;
+}
+
+.Bai_resultList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 10px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.Bai_resultList:empty {
+  display: none;
+}
+
+.Bai_resultItem {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 11px 14px;
+  border: 1px solid rgba(122, 162, 255, 0.16);
+  border-radius: 11px;
+  background: rgba(6, 12, 24, 0.55);
+  min-width: 0;
+}
+
+.Bai_resultKey {
+  color: rgba(143, 164, 200, 0.8);
+  font-size: 11.5px;
+  letter-spacing: 0.8px;
+}
+
+.Bai_resultValue {
+  color: #e6efff;
+  font-size: 13.5px;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+@media (max-width: 640px) {
+  .Bai_panel {
+    padding: 20px;
+    margin-top: 30px;
+  }
+  .Bai_actions {
+    flex-direction: column;
+  }
+  .Bai_btn {
+    width: 100%;
+  }
+  .Bai_resultList {
+    grid-template-columns: 1fr;
+  }
+}

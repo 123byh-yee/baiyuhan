@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+姓名：白雨涵 | 学号：24001010326 | 时间：2026-11-19 | 大模型：DeepSeek-V4.1-Flash
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>科技图文 | 知乎的模仿和制作</title>
+  <link rel="stylesheet" href="./css/Bai_index.css" />
+  <link rel="stylesheet" href="./css/Bai_gallery.css" />
+</head>
+<body class="Bai_body">
+  <canvas id="Bai_canvas" class="Bai_canvas"></canvas>
+  <div class="Bai_glow Bai_glowLeft"></div>
+  <div class="Bai_glow Bai_glowRight"></div>
+
+  <main class="Bai_main Bai_mainWide">
+    <a class="Bai_back" href="./index.html">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5" />
+        <path d="m11 18-6-6 6-6" />
+      </svg>
+      返回首页
+    </a>
+
+    <header class="Bai_hero">
+      <p class="Bai_badge">
+        <span class="Bai_dot"></span>科技图文
+      </p>
+      <h1 class="Bai_title Bai_titleSmall">科技图文列表</h1>
+      <p class="Bai_subtitle">
+        图文数据存储在 MySQL 数据表 <code class="Bai_code">Bai_gallery</code> 中，图片为本地生成并存放于
+        <code class="Bai_code">frontend/images</code>，页面通过后端接口拉取后渲染。
+      </p>
+    </header>
+
+    <!-- 后端接口信息 -->
+    <section class="Bai_apiPanel">
+      <div class="Bai_apiHead">
+        <span class="Bai_apiMethod">GET</span>
+        <code class="Bai_apiPath">/api/gallery</code>
+        <a class="Bai_apiOpen" href="/api/gallery" target="_blank" rel="noopener">
+          查看原始 JSON
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 17 17 7" />
+            <path d="M8 7h9v9" />
+          </svg>
+        </a>
+      </div>
+      <p class="Bai_apiUrl" id="Bai_apiUrl">http://localhost:8326/api/gallery</p>
+    </section>
+
+    <!-- 状态提示 -->
+    <div class="Bai_status" id="Bai_status">正在加载图文数据…</div>
+
+    <!-- 图文列表 -->
+    <section class="Bai_galleryGrid" id="Bai_galleryGrid"></section>
+
+    <p class="Bai_summary" id="Bai_summary"></p>
+
+    <footer class="Bai_footer">
+      <span>白雨涵 · 24001010326</span>
+      <span class="Bai_footerDivider">/</span>
+      <span>知乎的模仿和制作 · 科技图文列表</span>
+    </footer>
+  </main>
+
+  <script src="./js/Bai_canvas.js"></script>
+  <script src="./js/Bai_gallery.js"></script>
+</body>
+</html>
