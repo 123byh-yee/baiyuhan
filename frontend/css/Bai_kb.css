@@ -1,0 +1,328 @@
+/* 姓名：白雨涵 | 学号：24001010326 | 时间：2026-11-19 | 大模型：DeepSeek-V4.1-Flash */
+
+/* ===== 接口面板补充 ===== */
+.Bai_apiNote {
+  font-size: 12px;
+  color: var(--Bai_muted);
+}
+
+.Bai_apiPanel .Bai_apiHead + .Bai_apiHead {
+  margin-top: 10px;
+}
+
+/* ===== 栅格 ===== */
+.Bai_kbGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 22px;
+}
+
+.Bai_kbCard {
+  padding: 20px;
+  border: 1px solid var(--Bai_line);
+  border-radius: var(--Bai_radius);
+  background: var(--Bai_surface);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 50px rgba(2, 8, 24, 0.4);
+}
+
+.Bai_kbCardTitle {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #dce7ff;
+  letter-spacing: 0.4px;
+}
+
+.Bai_kbCardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.Bai_kbCardHead .Bai_kbCardTitle {
+  margin: 0;
+}
+
+.Bai_kbCount {
+  font-size: 12.5px;
+  color: var(--Bai_muted);
+}
+
+/* ===== 上传 ===== */
+.Bai_kbUpload {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.Bai_kbFile {
+  width: 100%;
+  padding: 14px;
+  border: 1px dashed rgba(122, 162, 255, 0.35);
+  border-radius: 12px;
+  background: rgba(8, 14, 28, 0.6);
+  color: var(--Bai_muted);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.Bai_kbFile::file-selector-button {
+  margin-right: 12px;
+  padding: 8px 16px;
+  border: 1px solid var(--Bai_line);
+  border-radius: 8px;
+  background: rgba(18, 30, 56, 0.8);
+  color: #cfe0ff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.Bai_kbBtn {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--Bai_accent), var(--Bai_accentSoft));
+  color: #04101f;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, opacity 0.22s ease;
+}
+
+.Bai_kbBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(47, 123, 255, 0.35);
+}
+
+.Bai_kbBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.Bai_kbHint {
+  margin: 14px 0 0;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: rgba(143, 164, 200, 0.8);
+}
+
+/* ===== 文件列表 ===== */
+.Bai_kbDocList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.Bai_kbDoc {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--Bai_line);
+  border-radius: 12px;
+  background: rgba(12, 20, 38, 0.68);
+}
+
+.Bai_kbDocIcon {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: rgba(47, 123, 255, 0.16);
+  color: #9fc3ff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.Bai_kbDocBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.Bai_kbDocName {
+  display: block;
+  font-size: 13.5px;
+  color: #e2ecff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.Bai_kbDocMeta {
+  display: block;
+  margin-top: 4px;
+  font-size: 11.5px;
+  color: rgba(143, 164, 200, 0.85);
+}
+
+.Bai_kbDocDel {
+  flex: none;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 107, 129, 0.35);
+  border-radius: 999px;
+  background: rgba(255, 77, 106, 0.1);
+  color: #ffa8b6;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.22s ease, color 0.22s ease;
+}
+
+.Bai_kbDocDel:hover {
+  background: rgba(255, 77, 106, 0.22);
+  color: #ffd2da;
+}
+
+.Bai_kbEmpty {
+  padding: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--Bai_muted);
+  border: 1px dashed var(--Bai_line);
+  border-radius: 12px;
+}
+
+/* ===== 问答区 ===== */
+.Bai_kbAskCard {
+  margin-top: 20px;
+}
+
+.Bai_kbAskForm {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.Bai_kbQuestion {
+  flex: 1;
+  min-height: 76px;
+  padding: 12px 14px;
+  border: 1px solid var(--Bai_line);
+  border-radius: 12px;
+  background: rgba(8, 14, 28, 0.7);
+  color: var(--Bai_text);
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 1.7;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.Bai_kbQuestion:focus {
+  border-color: rgba(56, 214, 255, 0.55);
+  box-shadow: 0 0 0 3px rgba(56, 214, 255, 0.1);
+}
+
+.Bai_kbAnswer {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid rgba(94, 240, 182, 0.28);
+  border-radius: 14px;
+  background: rgba(10, 32, 30, 0.5);
+  animation: Bai_answerIn 0.3s ease both;
+}
+
+@keyframes Bai_answerIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.Bai_kbAnswerHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.Bai_kbAnswerLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: #7df0c2;
+  letter-spacing: 1px;
+}
+
+.Bai_kbAnswerMeta {
+  font-size: 11.5px;
+  color: rgba(143, 164, 200, 0.8);
+  font-family: Consolas, "Courier New", monospace;
+}
+
+.Bai_kbAnswerText {
+  font-size: 14.5px;
+  line-height: 1.85;
+  color: #e6f1ff;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.Bai_kbRefs {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(122, 162, 255, 0.22);
+}
+
+.Bai_kbRefsTitle {
+  margin: 0 0 10px;
+  font-size: 12.5px;
+  color: var(--Bai_muted);
+  letter-spacing: 0.5px;
+}
+
+.Bai_kbRefsList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.Bai_kbRef {
+  padding: 10px 12px;
+  border: 1px solid var(--Bai_line);
+  border-radius: 10px;
+  background: rgba(12, 20, 38, 0.6);
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: #c3d6f5;
+}
+
+.Bai_kbRefName {
+  color: #9fc3ff;
+  font-weight: 600;
+}
+
+.Bai_kbRefSnippet {
+  display: block;
+  margin-top: 4px;
+  color: rgba(190, 208, 235, 0.78);
+}
+
+/* ===== 自适应 ===== */
+@media (max-width: 760px) {
+  .Bai_kbGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .Bai_kbAskForm {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

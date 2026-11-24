@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--
+姓名：白雨涵 | 学号：24001010326 | 时间：2026-11-23 | 大模型：DeepSeek-V4.1-Flash
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>图像识别 | 知乎的模仿和制作</title>
+  <link rel="stylesheet" href="./css/Bai_index.css" />
+  <link rel="stylesheet" href="./css/Bai_news.css" />
+  <link rel="stylesheet" href="./css/Bai_image.css" />
+</head>
+<body class="Bai_body">
+  <canvas id="Bai_canvas" class="Bai_canvas"></canvas>
+  <div class="Bai_glow Bai_glowLeft"></div>
+  <div class="Bai_glow Bai_glowRight"></div>
+
+  <main class="Bai_main Bai_mainWide">
+    <a class="Bai_back" href="./index.html">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5" />
+        <path d="m11 18-6-6 6-6" />
+      </svg>
+      返回首页
+    </a>
+
+    <header class="Bai_hero">
+      <p class="Bai_badge">
+        <span class="Bai_dot"></span>视觉大模型
+      </p>
+      <h1 class="Bai_title Bai_titleSmall">图像智能识别</h1>
+      <p class="Bai_subtitle">
+        上传本地图片，后端调用 SiliconFlow 视觉模型（deepseek-vl2）进行内容理解、OCR、物体识别与场景描述。
+        支持 JPG / PNG / GIF / WebP / BMP，单图不超过 10MB。
+      </p>
+    </header>
+
+    <!-- 接口信息 -->
+    <section class="Bai_apiPanel">
+      <div class="Bai_apiHead">
+        <span class="Bai_apiMethod Bai_apiMethodPost">POST</span>
+        <code class="Bai_apiPath">/api/image/recognize</code>
+        <span class="Bai_apiNote">上传图片调用视觉模型（字段 file + 可选 prompt/detail）</span>
+      </div>
+      <div class="Bai_apiHead">
+        <span class="Bai_apiMethod">GET</span>
+        <code class="Bai_apiPath">/api/image/records</code>
+        <a class="Bai_apiOpen" href="/api/image/records" target="_blank" rel="noopener">
+          查看原始 JSON
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 17 17 7" />
+            <path d="M8 7h9v9" />
+          </svg>
+        </a>
+      </div>
+      <p class="Bai_apiUrl" id="Bai_apiUrl">http://localhost:8326/api/image/records</p>
+    </section>
+
+    <!-- 主要操作区 -->
+    <section class="Bai_imageGrid">
+      <!-- 左：上传与参数 -->
+      <div class="Bai_imageCard">
+        <h2 class="Bai_imageCardTitle">上传图片</h2>
+
+        <!-- 图片预览 -->
+        <div class="Bai_imagePreview" id="Bai_preview">
+          <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="16" rx="2" />
+            <circle cx="8.5" cy="9" r="1.5" />
+            <path d="m4.5 18 4-5 4 4 4-6 3 4" />
+          </svg>
+          <span>请选择图片文件（单图 ≤ 10MB）</span>
+        </div>
+        <img class="Bai_imagePreviewImg" id="Bai_previewImg" alt="预览" hidden />
+
+        <form class="Bai_imageForm" id="Bai_uploadForm">
+          <input class="Bai_imageFile" id="Bai_file" type="file" accept=".jpg,.jpeg,.png,.gif,.webp,.bmp" />
+
+          <label class="Bai_imageLabel">识别提示（可选）</label>
+          <textarea
+            class="Bai_imagePrompt"
+            id="Bai_prompt"
+            rows="2"
+            placeholder="例如：请做 OCR 提取所有文字 / 描述这张风景图 / 识别图中的商品"
+          ></textarea>
+
+          <label class="Bai_imageLabel">图片处理精度</label>
+          <select class="Bai_imageSelect" id="Bai_detail">
+            <option value="low">low —— 快速识别（448×448，约 256 tokens）</option>
+            <option value="high">high —— 高清细节（保留原图分辨率，适合 OCR）</option>
+          </select>
+
+          <button class="Bai_imageBtn" id="Bai_submitBtn" type="submit">开始识别</button>
+        </form>
+
+        <div class="Bai_status" id="Bai_uploadStatus" hidden></div>
+      </div>
+
+      <!-- 右：识别结果 -->
+      <div class="Bai_imageCard Bai_imageResultCard">
+        <div class="Bai_imageCardHead">
+          <h2 class="Bai_imageCardTitle">识别结果</h2>
+        </div>
+
+        <div class="Bai_imageResultEmpty" id="Bai_resultEmpty">
+          上传图片并点击「开始识别」，AI 的回答会显示在这里
+        </div>
+
+        <article class="Bai_imageAnswer" id="Bai_resultAnswer" hidden>
+          <div class="Bai_imageAnswerHead">
+            <span class="Bai_imageAnswerLabel">AI 回答</span>
+            <span class="Bai_imageAnswerMeta" id="Bai_answerMeta"></span>
+          </div>
+          <div class="Bai_imageAnswerText" id="Bai_answerText"></div>
+          <div class="Bai_imageUsage" id="Bai_usage"></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 识别历史 -->
+    <section class="Bai_imageCard Bai_imageHistory">
+      <div class="Bai_imageCardHead">
+        <h2 class="Bai_imageCardTitle">识别历史</h2>
+        <span class="Bai_imageHistoryCount" id="Bai_historyCount">加载中…</span>
+      </div>
+      <div class="Bai_imageHistoryList" id="Bai_historyList"></div>
+    </section>
+
+    <footer class="Bai_footer">
+      <span>白雨涵 · 24001010326</span>
+      <span class="Bai_footerDivider">/</span>
+      <span>知乎的模仿和制作 · 图像识别</span>
+    </footer>
+  </main>
+
+  <script src="./js/Bai_canvas.js"></script>
+  <script src="./js/Bai_image.js"></script>
+</body>
+</html>

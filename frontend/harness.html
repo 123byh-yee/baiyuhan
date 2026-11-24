@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!--
+姓名：白雨涵 | 学号：24001010326 | 时间：2026-11-23 | 大模型：DeepSeek-V4.1-Flash
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harness Engineering | 知乎的模仿和制作</title>
+  <link rel="stylesheet" href="./css/Bai_index.css" />
+  <link rel="stylesheet" href="./css/Bai_news.css" />
+  <link rel="stylesheet" href="./css/Bai_harness.css" />
+</head>
+<body class="Bai_body">
+  <canvas id="Bai_canvas" class="Bai_canvas"></canvas>
+  <div class="Bai_glow Bai_glowLeft"></div>
+  <div class="Bai_glow Bai_glowRight"></div>
+
+  <main class="Bai_main Bai_mainWide">
+    <a class="Bai_back" href="./index.html">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+      返回首页
+    </a>
+
+    <header class="Bai_hero">
+      <p class="Bai_badge"><span class="Bai_dot"></span>LLM → 结构化 JSON</p>
+      <h1 class="Bai_title Bai_titleSmall">Harness Engineering</h1>
+      <p class="Bai_subtitle">
+        把自然语言评论转化为结构化 JSON：情感分类（sentiment）、实体抽取（entities）、关键短语（key_phrases）、建议/投诉分类。
+        后端预先设计好 JSON Schema，用大模型强制输出合规 JSON。
+      </p>
+    </header>
+
+    <section class="Bai_apiPanel">
+      <div class="Bai_apiHead">
+        <span class="Bai_apiMethod Bai_apiMethodPost">POST</span>
+        <code class="Bai_apiPath">/api/harness/analyze</code>
+        <span class="Bai_apiNote">输入一段评论文本 → 返回结构化 JSON</span>
+      </div>
+      <div class="Bai_apiHead">
+        <span class="Bai_apiMethod">GET</span>
+        <code class="Bai_apiPath">/api/harness/schema</code>
+        <a class="Bai_apiOpen" href="/api/harness/schema" target="_blank" rel="noopener">查看 JSON Schema 设计稿 ↗</a>
+      </div>
+      <div class="Bai_apiHead">
+        <span class="Bai_apiMethod">GET</span>
+        <code class="Bai_apiPath">/api/harness/list</code>
+        <span class="Bai_apiNote">历史记录</span>
+      </div>
+    </section>
+
+    <section class="Bai_harnessGrid">
+      <!-- 左：输入 + 示例 -->
+      <div class="Bai_harnessCard">
+        <h2 class="Bai_harnessCardTitle">输入评论</h2>
+        <textarea
+          class="Bai_harnessTextarea"
+          id="Bai_inputText"
+          rows="6"
+          placeholder="例如：这款 iPhone 16 Pro Max 做工精致、A18 芯片强劲，但续航一般、价格太贵"
+        ></textarea>
+
+        <div class="Bai_harnessBtns">
+          <button class="Bai_harnessAnalyze" id="Bai_analyzeBtn">开始分析</button>
+          <button class="Bai_harnessSchema" id="Bai_schemaBtn">查看 JSON Schema</button>
+        </div>
+
+        <div class="Bai_harnessExamples">
+          <p class="Bai_harnessExamplesLabel">快速示例（点击填入）</p>
+          <div class="Bai_harnessExampleList" id="Bai_examples"></div>
+        </div>
+
+        <div class="Bai_harnessStatus" id="Bai_status" hidden></div>
+      </div>
+
+      <!-- 右：JSON 输出 + 可视化卡片 -->
+      <div class="Bai_harnessCard">
+        <div class="Bai_harnessCardHead">
+          <h2 class="Bai_harnessCardTitle">分析结果</h2>
+          <button class="Bai_harnessCopy" id="Bai_copyBtn">复制 JSON</button>
+        </div>
+
+        <div class="Bai_harnessEmpty" id="Bai_emptyTip">输入一段评论点击「开始分析」，结果会显示在这里</div>
+
+        <div class="Bai_harnessResult" id="Bai_result" hidden>
+          <!-- 情感卡片 -->
+          <div class="Bai_harnessSentiment" id="Bai_sentimentCard"></div>
+          <!-- 实体列表 -->
+          <div class="Bai_harnessSection">
+            <h3 class="Bai_harnessSectionTitle">实体抽取 <span class="Bai_harnessCount" id="Bai_entityCount"></span></h3>
+            <div class="Bai_harnessEntities" id="Bai_entityList"></div>
+          </div>
+          <!-- 建议 / 投诉 -->
+          <div class="Bai_harnessTwoCol">
+            <div class="Bai_harnessSection">
+              <h3 class="Bai_harnessSectionTitle Bai_suggestion">💡 建议 <span class="Bai_harnessCount" id="Bai_suggestionCount"></span></h3>
+              <ul class="Bai_harnessList" id="Bai_suggestionList"></ul>
+            </div>
+            <div class="Bai_harnessSection">
+              <h3 class="Bai_harnessSectionTitle Bai_complaint">⚠️ 投诉 <span class="Bai_harnessCount" id="Bai_complaintCount"></span></h3>
+              <ul class="Bai_harnessList" id="Bai_complaintList"></ul>
+            </div>
+          </div>
+          <!-- 总结 -->
+          <div class="Bai_harnessSummary" id="Bai_summaryText"></div>
+
+          <!-- 原始 JSON -->
+          <details class="Bai_harnessRaw">
+            <summary>查看原始 JSON</summary>
+            <pre id="Bai_rawJson"></pre>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 历史 -->
+    <section class="Bai_harnessCard Bai_harnessHistory">
+      <div class="Bai_harnessCardHead">
+        <h2 class="Bai_harnessCardTitle">历史记录</h2>
+        <span class="Bai_harnessHistoryCount" id="Bai_historyCount">加载中…</span>
+      </div>
+      <div class="Bai_harnessHistoryList" id="Bai_historyList"></div>
+    </section>
+
+    <footer class="Bai_footer">
+      <span>白雨涵 · 24001010326</span>
+      <span class="Bai_footerDivider">/</span>
+      <span>Harness Engineering · LLM 结构化输出</span>
+    </footer>
+  </main>
+
+  <script src="./js/Bai_canvas.js"></script>
+  <script src="./js/Bai_harness.js"></script>
+</body>
+</html>

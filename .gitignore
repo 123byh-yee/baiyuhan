@@ -15,6 +15,12 @@ yarn-error.log*
 # IDE 分享产物
 .trae-html-share-packages/
 
+# 知识库上传文件
+backend/uploads/
+
+# 浏览器测试截图
+.screenshots/
+
 # 操作系统与编辑器
 .DS_Store
 Thumbs.db

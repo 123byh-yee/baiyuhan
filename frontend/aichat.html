@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+姓名：白雨涵 | 学号：24001010326 | 时间：2026-11-23 | 大模型：DeepSeek-V4.1-Flash
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 聊天 | 知乎的模仿和制作</title>
+  <link rel="stylesheet" href="./css/Bai_index.css" />
+  <link rel="stylesheet" href="./css/Bai_news.css" />
+  <link rel="stylesheet" href="./css/Bai_chat.css" />
+</head>
+<body class="Bai_body">
+  <canvas id="Bai_canvas" class="Bai_canvas"></canvas>
+  <div class="Bai_glow Bai_glowLeft"></div>
+  <div class="Bai_glow Bai_glowRight"></div>
+
+  <main class="Bai_main Bai_mainWide">
+    <a class="Bai_back" href="./index.html">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+      返回首页
+    </a>
+
+    <header class="Bai_hero">
+      <p class="Bai_badge"><span class="Bai_dot"></span>多轮上下文 + 持久化</p>
+      <h1 class="Bai_title Bai_titleSmall">AI 聊天助手</h1>
+      <p class="Bai_subtitle">
+        后端自动保存每个会话和消息，历史超过 20 条时让大模型自动压缩摘要，继续保持上下文连贯。多会话自由切换。
+      </p>
+    </header>
+
+    <section class="Bai_chatApp">
+      <!-- 左侧会话列表 -->
+      <aside class="Bai_chatSidebar">
+        <button class="Bai_chatNew" id="Bai_newBtn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+          新建会话
+        </button>
+        <div class="Bai_chatSessions" id="Bai_sessions"></div>
+        <div class="Bai_chatSidebarHint">共 <span id="Bai_sessionCount">0</span> 个会话</div>
+      </aside>
+
+      <!-- 右侧对话 -->
+      <div class="Bai_chatMain">
+        <div class="Bai_chatBar">
+          <span class="Bai_chatTitle" id="Bai_currentTitle">未选择会话</span>
+          <span class="Bai_chatModel">deepseek-ai/DeepSeek-V4.1-Flash</span>
+        </div>
+
+        <div class="Bai_chatMessages" id="Bai_messages">
+          <div class="Bai_chatWelcome" id="Bai_welcome">
+            <svg viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <p>点「新建会话」开始聊天，或选择左侧已有会话</p>
+          </div>
+        </div>
+
+        <form class="Bai_chatForm" id="Bai_chatForm">
+          <textarea class="Bai_chatInput" id="Bai_input" rows="2" placeholder="输入问题，Enter 发送，Shift + Enter 换行"></textarea>
+          <button class="Bai_chatSend" id="Bai_send" type="submit" disabled>发送</button>
+        </form>
+
+        <div class="Bai_chatStatus" id="Bai_status" hidden></div>
+      </div>
+    </section>
+
+    <footer class="Bai_footer">
+      <span>白雨涵 · 24001010326</span>
+      <span class="Bai_footerDivider">/</span>
+      <span>知乎的模仿和制作 · AI 聊天（持久化 + 自动压缩）</span>
+    </footer>
+  </main>
+
+  <script src="./js/Bai_canvas.js"></script>
+  <script src="./js/Bai_chat.js"></script>
+</body>
+</html>

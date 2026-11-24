@@ -1,0 +1,353 @@
+/* 姓名：白雨涵 | 学号：24001010326 | 时间：2026-11-23 | 大模型：DeepSeek-V4.1-Flash */
+
+/* ===== 主布局 ===== */
+.Bai_chatApp {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 18px;
+  margin-top: 22px;
+  height: 68vh;
+  min-height: 520px;
+}
+
+/* ===== Sidebar ===== */
+.Bai_chatSidebar {
+  padding: 16px 12px;
+  border: 1px solid var(--Bai_line);
+  border-radius: var(--Bai_radius);
+  background: var(--Bai_surface);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 50px rgba(2, 8, 24, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.Bai_chatNew {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 14px;
+  border: 1px solid rgba(56, 214, 255, 0.4);
+  border-radius: 10px;
+  background: rgba(47, 123, 255, 0.15);
+  color: #7fe3ff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.22s ease, transform 0.22s ease;
+}
+
+.Bai_chatNew:hover { background: rgba(47, 123, 255, 0.28); transform: translateY(-1px); }
+
+.Bai_chatSessions {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.Bai_sessionItem {
+  position: relative;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(12, 20, 38, 0.5);
+  border: 1px solid var(--Bai_line);
+  cursor: pointer;
+  transition: border-color 0.22s ease, background 0.22s ease;
+}
+
+.Bai_sessionItem:hover { border-color: rgba(56, 214, 255, 0.4); background: rgba(14, 28, 54, 0.5); }
+
+.Bai_sessionActive {
+  border-color: rgba(56, 214, 255, 0.6);
+  background: rgba(47, 123, 255, 0.18);
+}
+
+.Bai_sessionTitle {
+  font-size: 13px;
+  color: #cfe0ff;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 20px;
+}
+
+.Bai_sessionTime {
+  font-size: 11px;
+  color: var(--Bai_muted);
+  font-family: Consolas, monospace;
+  margin-top: 4px;
+}
+
+.Bai_sessionDel {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 18px;
+  height: 18px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(220, 72, 72, 0.2);
+  color: #ff8b8b;
+  font-size: 10px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.Bai_sessionItem:hover .Bai_sessionDel { opacity: 1; }
+.Bai_sessionDel:hover { background: rgba(220, 72, 72, 0.4); }
+
+.Bai_chatSidebarHint {
+  font-size: 11.5px;
+  color: var(--Bai_muted);
+  text-align: center;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(122, 162, 255, 0.2);
+}
+
+.Bai_chatEmptyHint {
+  padding: 20px 10px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--Bai_muted);
+  line-height: 1.8;
+}
+
+/* ===== 右侧主区 ===== */
+.Bai_chatMain {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--Bai_line);
+  border-radius: var(--Bai_radius);
+  background: var(--Bai_surface);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 50px rgba(2, 8, 24, 0.4);
+  overflow: hidden;
+}
+
+.Bai_chatBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--Bai_line);
+  background: rgba(8, 14, 28, 0.4);
+}
+
+.Bai_chatTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e6f1ff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 60%;
+}
+
+.Bai_chatModel {
+  font-size: 11.5px;
+  color: var(--Bai_muted);
+  letter-spacing: 0.3px;
+  font-family: Consolas, monospace;
+}
+
+/* ===== 欢迎 ===== */
+.Bai_chatWelcome {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  gap: 14px;
+  color: var(--Bai_muted);
+  text-align: center;
+  padding: 20px;
+}
+
+.Bai_chatWelcome svg { opacity: 0.4; }
+.Bai_chatWelcome p { margin: 0; font-size: 13px; line-height: 1.8; }
+
+/* ===== 消息区 ===== */
+.Bai_chatMessages {
+  flex: 1;
+  padding: 18px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.Bai_chatMessages::-webkit-scrollbar { width: 6px; }
+.Bai_chatMessages::-webkit-scrollbar-thumb { border-radius: 999px; background: rgba(122, 162, 255, 0.26); }
+
+.Bai_chatMsg {
+  display: flex;
+  gap: 10px;
+  max-width: 85%;
+  animation: Bai_msgIn 0.28s ease both;
+}
+
+@keyframes Bai_msgIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.Bai_chatMsgUser { align-self: flex-end; flex-direction: row-reverse; }
+.Bai_chatMsgAssistant { align-self: flex-start; }
+
+.Bai_chatMsgAvatar {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  background: rgba(12, 20, 38, 0.8);
+  border: 1px solid var(--Bai_line);
+}
+
+.Bai_chatMsgBody { max-width: 100%; }
+
+.Bai_chatMsgName {
+  font-size: 11.5px;
+  color: var(--Bai_muted);
+  margin-bottom: 4px;
+  letter-spacing: 0.3px;
+}
+
+.Bai_chatMsgTime {
+  margin-left: 8px;
+  font-family: Consolas, monospace;
+  font-size: 10.5px;
+  opacity: 0.7;
+}
+
+.Bai_chatMsgText {
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.Bai_chatMsgUser .Bai_chatMsgText {
+  border: 1px solid rgba(47, 123, 255, 0.45);
+  background: linear-gradient(135deg, rgba(47, 123, 255, 0.32), rgba(56, 214, 255, 0.18));
+  color: #f2f7ff;
+  border-bottom-right-radius: 4px;
+}
+
+.Bai_chatMsgAssistant .Bai_chatMsgText {
+  border: 1px solid var(--Bai_line);
+  background: rgba(12, 20, 38, 0.72);
+  color: #dce7ff;
+  border-bottom-left-radius: 4px;
+}
+
+/* 压缩历史卡片 */
+.Bai_chatCompressed {
+  align-self: center;
+  max-width: 90%;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(200, 150, 40, 0.15), rgba(200, 150, 40, 0.05));
+  border: 1px dashed rgba(200, 150, 40, 0.35);
+  text-align: left;
+}
+
+.Bai_chatCompressedLabel {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #e0bf6a;
+  letter-spacing: 0.4px;
+  margin-bottom: 4px;
+}
+
+.Bai_chatCompressedText {
+  font-size: 12.5px;
+  color: #c9b78a;
+  line-height: 1.7;
+}
+
+/* ===== 输入区 ===== */
+.Bai_chatForm {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  padding: 14px 18px;
+  border-top: 1px solid var(--Bai_line);
+  background: rgba(8, 14, 28, 0.4);
+}
+
+.Bai_chatInput {
+  flex: 1;
+  min-height: 48px;
+  max-height: 150px;
+  padding: 12px 14px;
+  border: 1px solid var(--Bai_line);
+  border-radius: 12px;
+  background: rgba(8, 14, 28, 0.7);
+  color: var(--Bai_text);
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 1.6;
+  resize: none;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.Bai_chatInput:focus {
+  border-color: rgba(56, 214, 255, 0.55);
+  box-shadow: 0 0 0 3px rgba(56, 214, 255, 0.1);
+}
+
+.Bai_chatSend {
+  padding: 0 24px;
+  height: 48px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--Bai_accent), var(--Bai_accentSoft));
+  color: #04101f;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, opacity 0.22s ease;
+}
+
+.Bai_chatSend:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(47, 123, 255, 0.35);
+}
+
+.Bai_chatSend:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ===== 状态 ===== */
+.Bai_chatStatus {
+  padding: 10px 18px;
+  border-top: 1px dashed rgba(122, 162, 255, 0.22);
+  font-size: 12.5px;
+  color: var(--Bai_muted);
+}
+
+.Bai_chatStatusError { color: #ff8b8b; }
+
+/* ===== 响应式 ===== */
+@media (max-width: 820px) {
+  .Bai_chatApp {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: auto;
+  }
+  .Bai_chatSidebar { max-height: 200px; }
+  .Bai_chatMain { min-height: 480px; }
+}

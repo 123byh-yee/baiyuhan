@@ -1,0 +1,380 @@
+/* 姓名：白雨涵 | 学号：24001010326 | 时间：2026-11-23 | 大模型：DeepSeek-V4.1-Flash */
+
+.Bai_harnessGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 22px;
+}
+
+.Bai_harnessCard {
+  padding: 22px;
+  border: 1px solid var(--Bai_line);
+  border-radius: var(--Bai_radius);
+  background: var(--Bai_surface);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 50px rgba(2, 8, 24, 0.4);
+}
+
+.Bai_harnessCardTitle {
+  margin: 0 0 14px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #dce7ff;
+  letter-spacing: 0.4px;
+}
+
+.Bai_harnessCardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.Bai_harnessCardHead .Bai_harnessCardTitle { margin: 0; }
+
+/* ===== 输入区 ===== */
+.Bai_harnessTextarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--Bai_line);
+  border-radius: 12px;
+  background: rgba(8, 14, 28, 0.7);
+  color: var(--Bai_text);
+  font-size: 13.5px;
+  font-family: inherit;
+  line-height: 1.8;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  box-sizing: border-box;
+}
+
+.Bai_harnessTextarea:focus {
+  border-color: rgba(56, 214, 255, 0.55);
+  box-shadow: 0 0 0 3px rgba(56, 214, 255, 0.1);
+}
+
+.Bai_harnessBtns {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.Bai_harnessAnalyze {
+  flex: 1;
+  padding: 13px 22px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--Bai_accent), var(--Bai_accentSoft));
+  color: #04101f;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.Bai_harnessAnalyze:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(47, 123, 255, 0.35);
+}
+
+.Bai_harnessAnalyze:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.Bai_harnessSchema {
+  padding: 13px 18px;
+  border: 1px solid var(--Bai_line);
+  border-radius: 12px;
+  background: rgba(12, 20, 38, 0.6);
+  color: #cfe0ff;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.22s ease;
+}
+
+.Bai_harnessSchema:hover { border-color: rgba(56, 214, 255, 0.5); }
+
+/* ===== 快速示例 ===== */
+.Bai_harnessExamples {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(122, 162, 255, 0.2);
+}
+
+.Bai_harnessExamplesLabel {
+  font-size: 12px;
+  color: var(--Bai_muted);
+  margin: 0 0 8px;
+}
+
+.Bai_harnessExampleList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.Bai_harnessExampleItem {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(12, 20, 38, 0.5);
+  border: 1px solid rgba(122, 162, 255, 0.18);
+  font-size: 12.5px;
+  color: #c9d6f0;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.Bai_harnessExampleItem:hover {
+  border-color: rgba(56, 214, 255, 0.45);
+  background: rgba(14, 28, 54, 0.6);
+}
+
+/* ===== 输出区 ===== */
+.Bai_harnessEmpty {
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  border: 1px dashed rgba(122, 162, 255, 0.25);
+  background: rgba(8, 14, 28, 0.4);
+  color: var(--Bai_muted);
+  font-size: 13px;
+  text-align: center;
+  padding: 20px;
+  line-height: 1.8;
+}
+
+.Bai_harnessResult {
+  animation: Bai_resultIn 0.3s ease both;
+}
+
+@keyframes Bai_resultIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 情感卡片 */
+.Bai_harnessSentiment {
+  padding: 18px;
+  border-radius: 14px;
+  margin-bottom: 16px;
+  text-align: center;
+  background: rgba(12, 20, 38, 0.7);
+  border: 1px solid var(--Bai_line);
+}
+
+.Bai_harnessSentimentPositive {
+  background: linear-gradient(135deg, rgba(46, 160, 117, 0.2), rgba(46, 160, 117, 0.08));
+  border-color: rgba(46, 160, 117, 0.5);
+}
+
+.Bai_harnessSentimentNegative {
+  background: linear-gradient(135deg, rgba(220, 72, 72, 0.2), rgba(220, 72, 72, 0.08));
+  border-color: rgba(220, 72, 72, 0.5);
+}
+
+.Bai_harnessSentimentNeutral {
+  background: linear-gradient(135deg, rgba(143, 164, 200, 0.2), rgba(143, 164, 200, 0.08));
+  border-color: rgba(143, 164, 200, 0.5);
+}
+
+.Bai_harnessSentimentMixed {
+  background: linear-gradient(135deg, rgba(200, 150, 40, 0.2), rgba(200, 150, 40, 0.08));
+  border-color: rgba(200, 150, 40, 0.5);
+}
+
+.Bai_harnessSentimentEmoji { font-size: 32px; line-height: 1; }
+.Bai_harnessSentimentLabel { font-size: 15px; font-weight: 700; color: #e6f1ff; margin-top: 8px; }
+.Bai_harnessSentimentScore { font-size: 12px; color: var(--Bai_muted); margin-top: 4px; font-family: Consolas, monospace; }
+
+/* 区块 */
+.Bai_harnessSection {
+  margin-bottom: 16px;
+}
+
+.Bai_harnessSectionTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #cfe0ff;
+  margin: 0 0 10px;
+  letter-spacing: 0.5px;
+}
+
+.Bai_harnessCount {
+  font-size: 11px;
+  color: var(--Bai_muted);
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.Bai_harnessEntities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.Bai_harnessEntity {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  background: rgba(12, 20, 38, 0.6);
+  border: 1px solid var(--Bai_line);
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.Bai_harnessEntityText { color: #e6f1ff; font-weight: 600; }
+.Bai_harnessEntityType { font-size: 10.5px; color: var(--Bai_muted); letter-spacing: 0.3px; }
+.Bai_harnessEntityPos { color: #7df0c2; }
+.Bai_harnessEntityNeg { color: #ff8b8b; }
+
+.Bai_harnessTwoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.Bai_harnessList {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #d5e4ff;
+}
+
+.Bai_suggestion { color: #7df0c2; }
+.Bai_complaint { color: #ff8b8b; }
+
+.Bai_harnessEmptyList {
+  font-size: 12.5px;
+  color: var(--Bai_muted);
+  padding: 6px 0;
+}
+
+.Bai_harnessSummary {
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: rgba(8, 14, 28, 0.6);
+  border-left: 3px solid rgba(56, 214, 255, 0.5);
+  font-size: 13.5px;
+  color: #d5e4ff;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+/* 原始 JSON */
+.Bai_harnessRaw {
+  border: 1px solid var(--Bai_line);
+  border-radius: 10px;
+  padding: 10px 14px;
+  background: rgba(4, 10, 22, 0.6);
+}
+
+.Bai_harnessRaw summary {
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--Bai_muted);
+  user-select: none;
+}
+
+.Bai_harnessRaw pre {
+  margin: 10px 0 0;
+  font-size: 11.5px;
+  line-height: 1.7;
+  color: #a5f3ff;
+  max-height: 260px;
+  overflow-y: auto;
+  font-family: Consolas, "Courier New", monospace;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.Bai_harnessCopy {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--Bai_line);
+  background: rgba(12, 20, 38, 0.6);
+  color: #cfe0ff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.Bai_harnessCopy:hover { border-color: rgba(56, 214, 255, 0.45); }
+
+/* 状态 */
+.Bai_harnessStatus {
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(56, 214, 255, 0.08);
+  border: 1px solid rgba(56, 214, 255, 0.3);
+  font-size: 13px;
+  color: #7fe3ff;
+}
+
+.Bai_harnessStatusError {
+  background: rgba(220, 72, 72, 0.08);
+  border-color: rgba(220, 72, 72, 0.3);
+  color: #ff8b8b;
+}
+
+/* 历史 */
+.Bai_harnessHistory { margin-top: 22px; }
+
+.Bai_harnessHistoryCount { font-size: 12.5px; color: var(--Bai_muted); }
+
+.Bai_harnessHistoryList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.Bai_harnessHistoryItem {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--Bai_line);
+  background: rgba(12, 20, 38, 0.55);
+  cursor: pointer;
+  transition: border-color 0.22s ease, background 0.22s ease;
+}
+
+.Bai_harnessHistoryItem:hover {
+  border-color: rgba(56, 214, 255, 0.4);
+  background: rgba(14, 28, 54, 0.6);
+}
+
+.Bai_harnessHistoryText {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #cfe0ff;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.Bai_harnessHistoryMeta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--Bai_muted);
+  font-family: Consolas, monospace;
+}
+
+@media (max-width: 820px) {
+  .Bai_harnessGrid { grid-template-columns: 1fr; }
+  .Bai_harnessHistoryList { grid-template-columns: 1fr; }
+  .Bai_harnessTwoCol { grid-template-columns: 1fr; }
+}

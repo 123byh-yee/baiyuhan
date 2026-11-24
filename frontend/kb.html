@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+姓名：白雨涵 | 学号：24001010326 | 时间：2026-11-19 | 大模型：DeepSeek-V4.1-Flash
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>知识库问答 | 知乎的模仿和制作</title>
+  <link rel="stylesheet" href="./css/Bai_index.css" />
+  <link rel="stylesheet" href="./css/Bai_news.css" />
+  <link rel="stylesheet" href="./css/Bai_kb.css" />
+</head>
+<body class="Bai_body">
+  <canvas id="Bai_canvas" class="Bai_canvas"></canvas>
+  <div class="Bai_glow Bai_glowLeft"></div>
+  <div class="Bai_glow Bai_glowRight"></div>
+
+  <main class="Bai_main Bai_mainWide">
+    <a class="Bai_back" href="./index.html">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5" />
+        <path d="m11 18-6-6 6-6" />
+      </svg>
+      返回首页
+    </a>
+
+    <header class="Bai_hero">
+      <p class="Bai_badge">
+        <span class="Bai_dot"></span>知识库（RAG）
+      </p>
+      <h1 class="Bai_title Bai_titleSmall">知识库管理与问答</h1>
+      <p class="Bai_subtitle">
+        上传本地文档后由后端解析、切分并入库，提问时先检索最相关的片段，再把片段作为上下文交给大模型生成回答。
+        支持 doc / docx / ppt / pptx / pdf / txt / md。
+      </p>
+    </header>
+
+    <!-- 接口信息 -->
+    <section class="Bai_apiPanel">
+      <div class="Bai_apiHead">
+        <span class="Bai_apiMethod Bai_apiMethodPost">POST</span>
+        <code class="Bai_apiPath">/api/kb/upload</code>
+        <span class="Bai_apiNote">上传并解析文件（字段名 file）</span>
+      </div>
+      <div class="Bai_apiHead">
+        <span class="Bai_apiMethod">GET</span>
+        <code class="Bai_apiPath">/api/kb/docs</code>
+        <a class="Bai_apiOpen" href="/api/kb/docs" target="_blank" rel="noopener">
+          查看原始 JSON
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 17 17 7" />
+            <path d="M8 7h9v9" />
+          </svg>
+        </a>
+      </div>
+      <div class="Bai_apiHead">
+        <span class="Bai_apiMethod Bai_apiMethodPost">POST</span>
+        <code class="Bai_apiPath">/api/kb/ask</code>
+        <span class="Bai_apiNote">基于知识库检索回答</span>
+      </div>
+      <p class="Bai_apiUrl" id="Bai_apiUrl">http://localhost:8326/api/kb/docs</p>
+    </section>
+
+    <section class="Bai_kbGrid">
+      <!-- 上传 -->
+      <div class="Bai_kbCard">
+        <h2 class="Bai_kbCardTitle">知识库文件上传</h2>
+        <form class="Bai_kbUpload" id="Bai_uploadForm">
+          <input class="Bai_kbFile" id="Bai_file" type="file" accept=".txt,.md,.pdf,.doc,.docx,.ppt,.pptx" />
+          <button class="Bai_kbBtn" id="Bai_uploadBtn" type="submit">上传并解析</button>
+        </form>
+        <p class="Bai_kbHint">单文件不超过 20MB；解析后会按段落切分为检索片段。</p>
+        <div class="Bai_status" id="Bai_uploadStatus" hidden></div>
+      </div>
+
+      <!-- 文件列表 -->
+      <div class="Bai_kbCard">
+        <div class="Bai_kbCardHead">
+          <h2 class="Bai_kbCardTitle">知识库文件</h2>
+          <span class="Bai_kbCount" id="Bai_docCount">加载中…</span>
+        </div>
+        <div class="Bai_kbDocList" id="Bai_docList"></div>
+      </div>
+    </section>
+
+    <!-- 问答 -->
+    <section class="Bai_kbCard Bai_kbAskCard">
+      <h2 class="Bai_kbCardTitle">基于知识库的问答</h2>
+      <form class="Bai_kbAskForm" id="Bai_askForm">
+        <textarea
+          class="Bai_kbQuestion"
+          id="Bai_question"
+          rows="3"
+          placeholder="例如：忘记密码怎么办？会员可以退款吗？"
+        ></textarea>
+        <button class="Bai_kbBtn" id="Bai_askBtn" type="submit">提问</button>
+      </form>
+      <div class="Bai_status" id="Bai_askStatus" hidden></div>
+
+      <article class="Bai_kbAnswer" id="Bai_kbAnswer" hidden>
+        <div class="Bai_kbAnswerHead">
+          <span class="Bai_kbAnswerLabel">AI 回答</span>
+          <span class="Bai_kbAnswerMeta" id="Bai_answerMeta"></span>
+        </div>
+        <div class="Bai_kbAnswerText" id="Bai_answerText"></div>
+        <div class="Bai_kbRefs">
+          <p class="Bai_kbRefsTitle">引用片段</p>
+          <ul class="Bai_kbRefsList" id="Bai_refsList"></ul>
+        </div>
+      </article>
+    </section>
+
+    <footer class="Bai_footer">
+      <span>白雨涵 · 24001010326</span>
+      <span class="Bai_footerDivider">/</span>
+      <span>知乎的模仿和制作 · 知识库问答</span>
+    </footer>
+  </main>
+
+  <script src="./js/Bai_canvas.js"></script>
+  <script src="./js/Bai_kb.js"></script>
+</body>
+</html>
